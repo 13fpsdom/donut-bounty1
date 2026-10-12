@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "donutbounty",
+  "version": "${version}",
+  "name": "DonutSMP Auction",
+  "description": "Client-side auction display: pick an item, run a countdown, show the highest payment and the winner. Read-only: never sends chat, runs commands or makes payments.",
+  "authors": ["You"],
+  "license": "All Rights Reserved",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.donutbounty.client.DonutBountyClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "1.21.1",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
