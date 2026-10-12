@@ -1,0 +1,26 @@
+name: build
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - folder: donut-bounty
+            mc: "1.21.10"
+          - folder: donut-bounty-1.21.1
+            mc: "1.21.1"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Build
+        working-directory: ${{ matrix.folder }}
+        run: chmod +x gradlew && ./gradlew build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: donut-bounty-jar-${{ matrix.mc }}
+          path: ${{ matrix.folder }}/build/libs/donut-bounty-${{ matrix.mc }}-1.0.0.jar
